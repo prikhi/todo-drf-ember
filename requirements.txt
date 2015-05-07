@@ -1,2 +1,4 @@
 Django==1.8
 djangorestframework==3.1
+django-cors-headers==1.0
+django_filter==0.9
