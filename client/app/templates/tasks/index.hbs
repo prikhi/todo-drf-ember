@@ -1,0 +1,45 @@
+<h1>
+  Tasks
+  <small>
+    {{#if remaining}}- {{remaining}} Remaining
+    {{else}}{{/if}}
+  </small>
+</h1>
+
+<ul class="block task-list">
+  <li>
+    <form id=task-form {{action 'createNewTask' on='submit'}}>
+      {{input value=formTitle placeholder="Task Name..." autofocus=true}}
+      {{#each errors.title as |error|}}
+        <div class="error">
+          ^ {{error}}
+        </div>
+      {{/each}}
+
+      {{textarea value=formDescription placeholder="Description..."}}
+      {{#each errors.description as |error|}}
+        <div class="error">
+          ^ {{error}}
+        </div>
+      {{/each}}
+
+      <button type='submit'>Add</button>
+    </form>
+  </li>
+  {{#each model as |task|}}
+    <li>
+      <h4 class=task-title>
+        {{#link-to 'tasks.task' task}}
+          {{task.title}}
+        {{/link-to}}
+      </h4>
+      <div class=task-desc>{{task.description}}</div>
+      <button {{action 'finishTask' task target="controllers.tasks/task"}}>
+        Finish
+      </button>
+      <button {{action 'deleteTask' task target="controllers.tasks/task"}}>
+        Delete
+      </button>
+    </li>
+  {{/each}}
+</ul>
