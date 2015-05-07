@@ -8,6 +8,12 @@
 
 <ul class="block task-list">
   <li>
+    {{#if added}}
+      <p>
+        Successfully added {{link-to added.title 'tasks.task' added}}.
+      </p>
+    {{/if}}
+
     <form id=task-form {{action 'createNewTask' on='submit'}}>
       {{input value=formTitle placeholder="Task Name..." autofocus=true}}
       {{field-error errors=errors.title}}

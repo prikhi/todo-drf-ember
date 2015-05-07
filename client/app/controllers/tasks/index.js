@@ -13,23 +13,21 @@ export default Ember.Controller.extend({
 
   actions: {
     createNewTask: function() {
+      var that = this;
       var task = this.store.createRecord('task', {
         title: this.get('formTitle'),
         description: this.get('formDescription'),
         favorite: false,
         isFinished: false,
       });
-      task.one('didCreate', this,  function() {
-        this.set('formTitle', '');
-        this.set('formDescription', '');
-      });
-      var that = this;
       task.save().then(function() {
-        this.set('formTitle', '');
-        this.set('formDescription', '');
+        that.set('formTitle', '');
+        that.set('formDescription', '');
+        that.set('errors', {});
+        that.set('added', task);
       }, function(reason) {
-        console.log(reason);
         that.set('errors', reason.errors);
+        that.set('added', false);
         task.deleteRecord(); 
       });
     },
