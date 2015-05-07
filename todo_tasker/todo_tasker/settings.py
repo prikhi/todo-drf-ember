@@ -38,12 +38,15 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'tasks',
     'rest_framework',
+    'corsheaders',
+
+    'tasks',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -105,7 +108,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-# Extras
+# REST Extras
 REST_FRAMEWORK = {
-    'PAGE_SIZE': 10,
+    'PAGINATE_BY': 10,
+    'PAGINATE_BY_PARAM': 'page_size',
+    'MAX_PAGINATE_BY': 100,
 }
+
+# Cross Origin Requests
+CORS_ORIGIN_ALLOW_ALL = DEBUG

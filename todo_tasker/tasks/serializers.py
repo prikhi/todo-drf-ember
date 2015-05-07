@@ -8,4 +8,4 @@ class TaskSerializer(serializers.HyperlinkedModelSerializer):
     class Meta(object):
         """Setup the serializer"""
         model = Task
-        fields = ('title', 'description', 'favorite')
+        fields = ('id', 'title', 'description', 'favorite', 'is_finished')
