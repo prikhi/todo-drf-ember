@@ -26,14 +26,10 @@
       <button type='submit'>Add</button>
     </form>
   </li>
+
   {{#each model as |task|}}
     <li>
-      <h4 class=task-title>
-        {{#link-to 'tasks.task' task}}
-          {{task.title}}
-        {{/link-to}}
-      </h4>
-      <div class=task-desc>{{task.description}}</div>
+      {{task-list-item task=task}}
       <button {{action 'finishTask' task target="controllers.tasks/task"}}>
         Finish
       </button>
