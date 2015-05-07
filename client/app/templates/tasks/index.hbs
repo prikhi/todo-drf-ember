@@ -10,18 +10,10 @@
   <li>
     <form id=task-form {{action 'createNewTask' on='submit'}}>
       {{input value=formTitle placeholder="Task Name..." autofocus=true}}
-      {{#each errors.title as |error|}}
-        <div class="error">
-          ^ {{error}}
-        </div>
-      {{/each}}
+      {{field-error errors=errors.title}}
 
       {{textarea value=formDescription placeholder="Description..."}}
-      {{#each errors.description as |error|}}
-        <div class="error">
-          ^ {{error}}
-        </div>
-      {{/each}}
+      {{field-error errors=errors.description}}
 
       <button type='submit'>Add</button>
     </form>
