@@ -1,0 +1,15 @@
+<h1>
+  Favorite Tasks
+  <small>{{tasks-remaining model=model}}</small>
+</h1>
+
+
+<div class=list-group>
+  <!-- Task List -->
+  {{#each model as |task|}}
+    <div class=list-group-item>
+      {{task-list-item task=task}}
+      {{task-buttons task=task}}
+    </div>
+  {{/each}}
+</div>

@@ -1,17 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  needs: ['tasks/task'],
-
-  newTask: {title: "", description: "", isFinished: false, favorite: false},
-
+  newTask: {title: "", description: "", isFinished: false, isFavorite: false},
 
   actions: {
     createNewTask: function() {
       var that = this;
       var task = this.store.createRecord('task', this.get('newTask'));
       task.save().then(function() {
-        that.set('newTask', {title: "", description: "", isFinished: false, favorite: false});
+        that.set('newTask', {title: "", description: "", isFinished: false, isFavorite: false});
         that.set('errors', {});
         that.set('added', task);
       }, function(reason) {

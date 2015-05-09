@@ -8,5 +8,6 @@ var Router = Ember.Router.extend({
 export default Router.map(function() {
   this.route('tasks', function() {
     this.route('task', { path: ':task_id' });
+    this.route('favorites');
   });
 });
