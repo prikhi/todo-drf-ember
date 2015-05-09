@@ -5,10 +5,6 @@ export default Ember.Controller.extend({
 
   newTask: {title: "", description: "", isFinished: false, favorite: false},
 
-  remaining: function() {
-    var tasks = this.get('model');
-    return tasks.filterBy('isFinished', false).get('length');
-  }.property('model.@each.isFinished'),
 
   actions: {
     createNewTask: function() {
