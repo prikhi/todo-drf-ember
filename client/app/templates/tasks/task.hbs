@@ -11,18 +11,8 @@
   </small>
 </h1>
 
-<div class="item-buttons">
-  {{#bs-button-group }}
-    {{#unless task.isFinished}}
-      <button {{action 'finishTask' task}} class="btn btn-primary">
-        Finish
-      </button>
-    {{/unless}}
-    <button {{action 'deleteTask' task}} class="btn btn-danger">
-      Delete
-    </button>
-  {{/bs-button-group}}
-</div>
+{{task-buttons task=task}}
+
 <p class=task-descr>
   {{break-newlines task.description}}
 </p>

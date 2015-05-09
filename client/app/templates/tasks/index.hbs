@@ -30,18 +30,7 @@
   {{#each model as |task|}}
     <div class=list-group-item>
       {{task-list-item task=task}}
-      <div class=item-buttons>
-        {{#bs-button-group}}
-          <button {{action 'finishTask' task target="controllers.tasks/task"}}
-                  class="btn btn-primary btn-sm">
-            Finish
-          </button>
-          <button {{action 'deleteTask' task target="controllers.tasks/task"}}
-                  class="btn btn-danger btn-sm">
-            Delete
-          </button>
-        {{/bs-button-group}}
-      </div>
+      {{task-buttons task=task}}
     </div>
   {{/each}}
 </div>
