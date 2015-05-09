@@ -6,34 +6,42 @@
   </small>
 </h1>
 
-<ul class="block task-list">
-  <li>
+
+<div class=list-group>
+  <!-- New Task Form -->
+  <div class=list-group-item>
     {{#if added}}
-      <p>
+      {{#bs-alert type="success"}}
         Successfully added {{link-to added.title 'tasks.task' added}}.
-      </p>
+      {{/bs-alert}}
     {{/if}}
 
-    <form id=task-form {{action 'createNewTask' on='submit'}}>
-      {{input value=formTitle placeholder="Task Name..." autofocus=true}}
-      {{field-error errors=errors.title}}
+    {{#bs-form id=task-form action='createNewTask' form_layout=horizontal}}
+      {{bs-form-element value=newTask.title label="Task"
+          placeholder="Task Name..." errors=errors.title autofocus=true}}
+      {{bs-form-element controlType='textarea' value=newTask.description
+          label="Description" placeholder="Description..."
+          errors=errors.description}}
+      {{bs-button defaultText="Submit" buttonType="submit" class="btn-primary"}}
+    {{/bs-form}}
+  </div>
 
-      {{textarea value=formDescription placeholder="Description..."}}
-      {{field-error errors=errors.description}}
-
-      <button type='submit'>Add</button>
-    </form>
-  </li>
-
+  <!-- Task List -->
   {{#each model as |task|}}
-    <li>
+    <div class=list-group-item>
       {{task-list-item task=task}}
-      <button {{action 'finishTask' task target="controllers.tasks/task"}}>
-        Finish
-      </button>
-      <button {{action 'deleteTask' task target="controllers.tasks/task"}}>
-        Delete
-      </button>
-    </li>
+      <div class=item-buttons>
+        {{#bs-button-group}}
+          <button {{action 'finishTask' task target="controllers.tasks/task"}}
+                  class="btn btn-primary btn-sm">
+            Finish
+          </button>
+          <button {{action 'deleteTask' task target="controllers.tasks/task"}}
+                  class="btn btn-danger btn-sm">
+            Delete
+          </button>
+        {{/bs-button-group}}
+      </div>
+    </div>
   {{/each}}
-</ul>
+</div>
