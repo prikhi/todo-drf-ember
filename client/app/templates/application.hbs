@@ -1,9 +1,15 @@
-<h2 id="site-title">{{siteTitle}}</h2>
+<div class="container">
+  <h2 id="site-title">{{siteTitle}}</h2>
 
-<div id=main-content>
-  {{outlet}}
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      {{outlet}}
+    </div>
+  </div>
 </div>
 
 <footer>
-  &copy;2015, GPLv3
+  <div class="container-fluid">
+    <p>&copy;2015, GPLv3</p>
+  </div>
 </footer>
