@@ -9,4 +9,4 @@ class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filter_fields = ('is_finished',)
+    filter_fields = ('is_finished', 'is_favorite')
