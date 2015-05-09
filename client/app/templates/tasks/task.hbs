@@ -1,18 +1,30 @@
 {{#with model as |task|}}
+
 <h1 class=task-title>
   {{task.title}}
-  <small>{{if task.isFinished '- Finished!' ''}}</small>
+  <small>
+    {{#if task.isFinished}}
+      <span class="label label-primary">
+        Finished!
+      </span>
+    {{else}}{{/if}}
+  </small>
 </h1>
-<div class=task-descr>
-  <b>Description: </b>
-  {{task.description}}</div>
-{{#link-to 'tasks'}}<button>
-  Tasks
-</button>{{/link-to}}
-<button {{action 'finishTask' task}}>
-  Finish
-</button>
-<button {{action 'deleteTask' task}}>
-  Delete
-</button>
+
+<div class="item-buttons">
+  {{#bs-button-group }}
+    {{#unless task.isFinished}}
+      <button {{action 'finishTask' task}} class="btn btn-primary">
+        Finish
+      </button>
+    {{/unless}}
+    <button {{action 'deleteTask' task}} class="btn btn-danger">
+      Delete
+    </button>
+  {{/bs-button-group}}
+</div>
+<p class=task-descr>
+  {{break-newlines task.description}}
+</p>
+
 {{/with}}
