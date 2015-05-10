@@ -7,7 +7,7 @@ export default Ember.Route.extend({
     return this.store.filter(
       'task',
       { is_finished: 'False', is_favorite: 'True' },
-      function(task) {
+      task => {
           return !task.get('isFinished') && task.get('isFavorite');
       }
     );
