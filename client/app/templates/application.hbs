@@ -13,8 +13,12 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li>{{link-to 'All Tasks' 'tasks' }}</li>
-        <li>{{link-to 'Favorites' 'tasks.favorites' }}</li>
+        {{#link-to 'tasks.index' tagName="li"}}
+          {{link-to 'All Tasks' 'tasks'}}
+        {{/link-to}}
+        {{#link-to 'tasks.favorites' tagName="li"}}
+          {{link-to 'Favorites' 'tasks.favorites'}}
+        {{/link-to}}
       </ul>
     </div>
   </div>
