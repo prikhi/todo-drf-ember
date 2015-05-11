@@ -9,10 +9,10 @@ export default Ember.Controller.extend({
       task.save().then(() => {
         this.set('newTask', this.store.createRecord('task'));
         this.set('errors', {});
-        this.set('added', task);
+        var messageText = 'Added "%@".'.fmt(task.get('title'));
+        this.notify.success(messageText);
       }, reason => {
         this.set('errors', reason.errors);
-        this.set('added', false);
       });
     },
   }

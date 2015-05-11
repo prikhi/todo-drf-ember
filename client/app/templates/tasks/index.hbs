@@ -7,12 +7,6 @@
 <div class=list-group>
   <!-- New Task Form -->
   <div class=list-group-item>
-    {{#if added}}
-      {{#bs-alert type="success"}}
-        Successfully added {{link-to added.title 'tasks.task' added}}.
-      {{/bs-alert}}
-    {{/if}}
-
     {{#bs-form id=task-form action='createNewTask' form_layout=horizontal}}
       {{bs-form-element value=newTask.title label="Task"
           placeholder="Task Name..." errors=errors.title autofocus=true}}
