@@ -5,13 +5,12 @@ export default Ember.Controller.extend({
 
   actions: {
     createNewTask: function() {
-      var task = this.store.createRecord('task', this.get('newTask'));
+      var task = this.get('newTask');
       task.save().then(() => {
-        this.set('newTask', {title: "", description: "", isFinished: false, isFavorite: false});
+        this.set('newTask', this.store.createRecord('task'));
         this.set('errors', {});
         this.set('added', task);
       }, reason => {
-        task.deleteRecord();
         this.set('errors', reason.errors);
         this.set('added', false);
       });

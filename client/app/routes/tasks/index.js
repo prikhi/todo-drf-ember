@@ -8,7 +8,13 @@ export default Ember.Route.extend({
       'task',
       { is_finished: 'False' },
       task => {
-      return !task.get('isFinished');
+      return !task.get('isFinished') && !task.get('isNew');
     });
   },
+
+  setupController: function(controller, model) {
+    this._super(controller, model);
+    var newTask = this.store.createRecord('task');
+    controller.set('newTask', newTask);
+  }
 });
